@@ -1,0 +1,71 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: vibe-app
+  namespace: vibe
+
+spec:
+  replicas: 2
+
+  strategy:
+    canary:
+      canaryService: vibe-app-canary
+      stableService: vibe-app-stable
+
+      trafficRouting:
+        istio:
+          virtualService:
+            name: vibe-app
+            routes:
+              - primary
+
+      steps:
+        - setWeight: 20
+
+        - pause:
+            duration: 30s
+
+        - setWeight: 50
+
+        - pause:
+            duration: 30s
+
+        - setWeight: 100
+
+  selector:
+    matchLabels:
+      app: vibe-app
+
+  template:
+    metadata:
+      labels:
+        app: vibe-app
+        version: stable
+
+    spec:
+      serviceAccountName: vibe-app
+
+      containers:
+        - name: vibe-app
+
+          image: 161230539245.dkr.ecr.us-east-1.amazonaws.com/vibe-app:latest
+
+          ports:
+            - containerPort: 8000
+
+          env:
+            - name: AWS_REGION
+              value: "us-east-1"
+
+            - name: BEDROCK_MODEL_ID
+              value: "us.amazon.nova-2-lite-v1:0"
+
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000

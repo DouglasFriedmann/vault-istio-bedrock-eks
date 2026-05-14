@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: vibe-app
+  namespace: vibe
+
+spec:
+  host: vibe-app
+
+  subsets:
+    - name: stable
+      labels:
+        version: stable
+
+    - name: canary
+      labels:
+        version: canary

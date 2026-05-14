@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: vibe-app
+  namespace: vibe
+
+spec:
+  hosts:
+    - "*"
+
+  gateways:
+    - vibe-gateway
+
+  http:
+    - name: primary
+      route:
+        - destination:
+            host: vibe-app-stable
+          weight: 100
+
+        - destination:
+            host: vibe-app-canary
+          weight: 0

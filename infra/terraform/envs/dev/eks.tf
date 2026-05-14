@@ -30,4 +30,16 @@ module "eks" {
   tags = {
     Project = "vault-istio-bedrock-eks"
   }
+
+  node_security_group_additional_rules = {
+  ingress_cluster_istio_webhook = {
+    description                   = "Allow EKS control plane to reach Istio webhook"
+    protocol                      = "tcp"
+    from_port                     = 15017
+    to_port                       = 15017
+    type                          = "ingress"
+    source_cluster_security_group = true
+    }
+  }
 }
+

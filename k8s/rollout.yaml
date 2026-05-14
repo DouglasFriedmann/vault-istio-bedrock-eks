@@ -41,6 +41,14 @@ spec:
       labels:
         app: vibe-app
         version: stable
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "vibe-app"
+        vault.hashicorp.com/agent-inject-secret-system_prompt: "secret/data/vibe"
+        vault.hashicorp.com/agent-inject-template-system_prompt: |
+          {{- with secret "secret/data/vibe" -}}
+          {{- .Data.data.system_prompt }}
+          {{- end }}
 
     spec:
       serviceAccountName: vibe-app

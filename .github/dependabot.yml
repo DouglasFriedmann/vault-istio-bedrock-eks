@@ -15,3 +15,7 @@ updates:
     directory: "/infra/terraform/envs/dev"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"

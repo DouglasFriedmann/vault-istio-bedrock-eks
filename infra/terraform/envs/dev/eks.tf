@@ -1,6 +1,6 @@
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "~> 20.0"
+  version = "~> 21.20"
 
   cluster_name    = "vibe-eks"
   cluster_version = "1.33"

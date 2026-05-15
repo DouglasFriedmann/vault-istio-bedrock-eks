@@ -3,11 +3,14 @@ kind: Service
 metadata:
   name: vibe-app-canary
   namespace: vibe
+  labels:
+    app: vibe-app
 
 spec:
   selector:
     app: vibe-app
 
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 8000

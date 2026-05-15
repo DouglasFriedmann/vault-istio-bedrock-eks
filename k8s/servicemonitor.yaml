@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: vibe-app
+  namespace: vibe
+  labels:
+    release: kube-prometheus-stack
+
+spec:
+  selector:
+    matchLabels:
+      app: vibe-app
+
+  namespaceSelector:
+    matchNames:
+      - vibe
+
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 30s

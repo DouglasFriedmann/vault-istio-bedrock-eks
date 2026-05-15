@@ -40,7 +40,7 @@ module "eks" {
       type                          = "ingress"
       source_cluster_security_group = true
     }
-  
+
     ingress_cluster_vault_webhook = {
       description                   = "Allow EKS control plane to reach Vault injector webhook"
       protocol                      = "tcp"

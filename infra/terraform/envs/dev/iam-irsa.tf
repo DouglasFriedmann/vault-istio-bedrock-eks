@@ -13,7 +13,7 @@ data "aws_iam_policy_document" "vibe_bedrock" {
 
 module "vibe_app_irsa" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  version = "~> 5.0"
+  version = "~> 6.6"
 
   role_name = "vibe-app-bedrock-irsa"
 

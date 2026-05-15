@@ -1,6 +1,6 @@
 # VIBE — Vault + Istio + Bedrock on EKS
 
-![CI](https://github.com/DouglasFriedmann/vault-istio-bedrock-eks/actions/workflows/ci.yaml/badge.svg)
+![CI](https://github.com/DouglasFriedmann/vault-istio-bedrock-eks/actions/workflows/ci.yml/badge.svg)
 ![CodeQL](https://github.com/DouglasFriedmann/vault-istio-bedrock-eks/actions/workflows/codeql.yml/badge.svg)
 ![Dependabot](https://img.shields.io/badge/dependabot-enabled-brightgreen?logo=dependabot)
 

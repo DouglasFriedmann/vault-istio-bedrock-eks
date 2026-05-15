@@ -1,3 +1,6 @@
+# Legacy Kubernetes Deployment retained for comparison.
+# Replaced by rollout.yaml using Argo Rollouts canary strategy.
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:

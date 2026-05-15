@@ -1,6 +1,6 @@
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 5.0"
+  version = "~> 6.6"
 
   name = "vibe-vpc"
   cidr = "10.50.0.0/16"
